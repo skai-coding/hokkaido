@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>北海道六天五夜｜冬日小旅行</title>
+<style>
+:root{
+  --bg:#f4f8fc; --surface:#ffffff; --text:#1f2d3d; --muted:#5b6b7c;
+  --accent:#2f6fb3; --accent-soft:#e3eefa; --line:#d5e1ee;
+  --hero1:#2f6fb3; --hero2:#8ec5f0;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#101823; --surface:#18232f; --text:#e6eef7; --muted:#9fb0c2;
+    --accent:#7ab6ee; --accent-soft:#1f3347; --line:#2a3b4d;
+    --hero1:#1b3a5c; --hero2:#3d6f9e; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101823; --surface:#18232f; --text:#e6eef7; --muted:#9fb0c2;
+  --accent:#7ab6ee; --accent-soft:#1f3347; --line:#2a3b4d;
+  --hero1:#1b3a5c; --hero2:#3d6f9e; color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  line-height:1.7;
+}
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 84% 24%,rgba(255,255,255,.95) 0 13px,rgba(255,255,255,.22) 14px 38px,transparent 40px),
+    linear-gradient(180deg,#0f2447 0%,#2c5a92 52%,#a9cfee 100%);
+  color:#fff;text-align:center;padding:80px 20px 150px;
+}
+.hero h1,.hero p,.hero .tag{position:relative;z-index:2;text-shadow:0 2px 12px rgba(5,20,45,.45)}
+.scene{position:absolute;left:0;bottom:-1px;width:100%;height:200px;z-index:1;display:block}
+.snow{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px,#fff,transparent),
+    radial-gradient(3px 3px at 90px 80px,#fff,transparent),
+    radial-gradient(2px 2px at 160px 20px,#fff,transparent),
+    radial-gradient(2.5px 2.5px at 50px 140px,#fff,transparent),
+    radial-gradient(2px 2px at 130px 110px,#fff,transparent),
+    radial-gradient(3px 3px at 180px 170px,#fff,transparent);
+  background-size:200px 200px;animation:fall1 9s linear infinite;opacity:.9}
+.snow.s2{background-size:320px 320px;background-position:60px 40px;animation:fall2 15s linear infinite;opacity:.55}
+@keyframes fall1{to{background-position:-40px 200px}}
+@keyframes fall2{to{background-position:100px 360px}}
+@media (prefers-reduced-motion:reduce){.snow{animation:none}}
+.hero h1{font-size:clamp(2rem,6vw,3.2rem);letter-spacing:.08em}
+.hero p{margin-top:12px;font-size:1.05rem;opacity:.92}
+.tag{
+  display:inline-block;margin-top:20px;padding:4px 16px;
+  border:1px solid rgba(255,255,255,.7);border-radius:999px;font-size:.9rem;
+}
+nav{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:5;
+  display:flex;flex-wrap:wrap;justify-content:center;gap:4px 8px;padding:10px;
+  background:var(--surface);border-bottom:1px solid var(--line);
+}
+nav a{
+  color:var(--accent);text-decoration:none;padding:6px 16px;
+  border-radius:999px;font-weight:600;font-size:.95rem;
+}
+nav a:hover{background:var(--accent-soft)}
+main{max-width:760px;margin:0 auto;padding:32px 18px 56px}
+.day{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:16px;padding:24px 22px;margin-bottom:28px;
+}
+.day h2{font-size:1.4rem;color:var(--accent)}
+.day .sub{color:var(--muted);margin-bottom:16px}
+.item{display:flex;gap:14px;padding:12px 0;border-top:1px dashed var(--line)}
+.item:first-of-type{border-top:none}
+.time{flex:0 0 96px;font-weight:700;font-size:.88rem;color:var(--accent)}
+.item h3{font-size:1.02rem}
+.item p{color:var(--muted);font-size:.93rem}
+.stay{
+  margin-top:14px;padding:10px 14px;border-radius:10px;
+  background:var(--accent-soft);font-size:.93rem;
+}
+.tips{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:16px;padding:22px;
+}
+.tips h2{font-size:1.2rem;margin-bottom:8px;color:var(--accent)}
+.tips ul{padding-left:20px;color:var(--muted)}
+.spots{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px 22px;margin-bottom:28px}
+.spots h2{font-size:1.4rem;color:var(--accent)}
+.spots .sub{color:var(--muted);margin-bottom:8px}
+.region{margin-top:22px}
+.region h3{font-size:1.15rem;padding-left:10px;border-left:4px solid var(--accent)}
+.group{margin-top:12px}
+.group h4{font-size:.95rem;color:var(--muted);margin-bottom:6px}
+.links{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.links li{display:flex;flex-direction:column}
+.links a{display:inline-block;padding:6px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent);text-decoration:none;font-size:.92rem}
+.links a:hover{text-decoration:underline}
+.links a.warn{background:transparent;border:1px dashed var(--muted);color:var(--muted)}
+.links .note{font-size:.78rem;color:var(--muted);padding:2px 12px 0}
+footer{text-align:center;color:var(--muted);padding:24px;font-size:.85rem}
+@media (max-width:480px){.time{flex-basis:84px}.day{padding:20px 16px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="snow"></div><div class="snow s2"></div>
+  <svg class="scene" viewBox="0 0 1200 220" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs><g id="pine"><rect x="-3" y="-6" width="6" height="10" fill="#10293a"/><path d="M0 -78 L24 -40 L11 -40 L30 -8 L-30 -8 L-11 -40 L-24 -40Z" fill="#1b3f55"/><path d="M0 -78 L9 -62 L-9 -62Z" fill="#fff" opacity=".92"/><path d="M-11 -40 L11 -40 L16 -33 L-16 -33Z" fill="#fff" opacity=".8"/></g></defs>
+    <path d="M0 140 L120 70 L210 120 L330 40 L450 125 L560 80 L690 135 L820 55 L950 120 L1070 75 L1200 130 L1200 220 L0 220Z" fill="#fff" opacity=".35"/>
+    <path d="M0 170 L140 110 L260 160 L400 95 L540 165 L680 120 L820 170 L980 105 L1100 160 L1200 130 L1200 220 L0 220Z" fill="#fff" opacity=".78"/>
+    <path d="M0 192 Q300 166 600 186 T1200 176 L1200 221 L0 221Z" fill="var(--bg)"/>
+    <use href="#pine" transform="translate(48 206) scale(1.25)"/>
+    <use href="#pine" transform="translate(130 204) scale(.85)"/>
+    <use href="#pine" transform="translate(300 198) scale(.7)"/>
+    <use href="#pine" transform="translate(900 196) scale(.75)"/>
+    <use href="#pine" transform="translate(1050 202) scale(1)"/>
+    <use href="#pine" transform="translate(1145 206) scale(1.3)"/>
+  </svg>
+  <h1>北海道・冬日六天五夜</h1>
+  <p>札幌 ・ 小樽 ｜ 12/10（四）– 12/15（二）</p>
+  <span class="tag">❄️ 雪景 × 美食 × 聖誕市集</span>
+</header>
+
+<nav>
+  <a href="#day1">12/10</a>
+  <a href="#day2">12/11</a>
+  <a href="#day3">12/12</a>
+  <a href="#day4">12/13</a>
+  <a href="#day5">12/14</a>
+  <a href="#day6">12/15</a>
+  <a href="#spots">各景點與吃</a>
+  <a href="#tips">小提醒</a>
+</nav>
+
+<main>
+  <section class="day" id="day1">
+    <h2>Day 1｜12/10（四）出發・抵達札幌</h2>
+    <p class="sub">台灣時間 06:00 出發，08:45 起飛</p>
+    <div class="item"><div class="time">06:00</div><div><h3>潮州出發</h3><p>搭計程車前往高雄國際機場（台灣時間）。</p></div></div>
+    <div class="item"><div class="time">08:45</div><div><h3>高雄起飛</h3><p>高雄國際機場飛往新千歲機場（台灣時間）。</p></div></div>
+    <div class="item"><div class="time">13:40</div><div><h3>抵達新千歲機場</h3><p>以下皆為日本時間。</p></div></div>
+    <div class="item"><div class="time">14:00–16:30</div><div><h3>前往飯店</h3><p>途中可順道逛新千歲機場。</p></div></div>
+    <div class="item"><div class="time">17:00–20:00</div><div><h3>狸小路 &amp; 二條市場</h3><p>逛街、買東西、找晚餐。</p></div></div>
+    <div class="stay">💡 二條市場不少攤位傍晚就收，建議先逛二條市場，再逛營業到較晚的狸小路。</div>
+    <div class="stay">🏨 住宿：札幌</div>
+  </section>
+
+  <section class="day" id="day2">
+    <h2>Day 2｜12/11（五）小樽一日</h2>
+    <p class="sub">搭電車往返小樽，慢慢逛</p>
+    <div class="item"><div class="time">10:00–11:00</div><div><h3>抵達小樽</h3><p>從札幌搭 JR 前往。</p></div></div>
+    <div class="item"><div class="time">11:00–12:00</div><div><h3>午餐</h3><p>小樽在地美食。</p></div></div>
+    <div class="item"><div class="time">12:00–18:00</div><div><h3>商店街散策</h3><p>音樂盒堂、堺町通一帶慢慢逛。</p></div></div>
+    <div class="item"><div class="time">18:00–19:30</div><div><h3>小樽晚餐</h3><p>用完餐再回札幌。</p></div></div>
+    <div class="stay">🏨 住宿：札幌</div>
+  </section>
+
+  <section class="day" id="day3">
+    <h2>Day 3｜12/12（六）神宮・動物園・聖誕市集</h2>
+    <p class="sub">札幌近郊景點滿滿的一天</p>
+    <div class="item"><div class="time">10:00–12:00</div><div><h3>北海道神宮</h3><p>雪中參拜，氣氛特別安靜。</p></div></div>
+    <div class="item"><div class="time">12:00–13:00</div><div><h3>附近午餐</h3><p>六花亭、神宮茶屋等。</p></div></div>
+    <div class="item"><div class="time">13:00–15:00</div><div><h3>圓山動物園</h3><p>冬天的動物很可愛。</p></div></div>
+    <div class="item"><div class="time">15:00–17:00</div><div><h3>白色戀人工廠</h3><p>參觀、體驗、買伴手禮。</p></div></div>
+    <div class="item"><div class="time">18:00 起</div><div><h3>慕尼黑聖誕市集</h3><p>大通公園，逛市集吃吃喝喝。</p></div></div>
+    <div class="stay">🏨 住宿：札幌</div>
+  </section>
+
+  <section class="day" id="day4">
+    <h2>Day 4｜12/13（日）彈性行程／大雪備案</h2>
+    <p class="sub">天氣好就出遊，下大雪就改室內</p>
+    <div class="item"><div class="time">全天</div><div><h3>彈性安排</h3><p>可把還沒排進去的餐廳與伴手禮放在這天。</p></div></div>
+    <div class="stay">🏨 住宿：札幌</div>
+  </section>
+
+  <section class="day" id="day5">
+    <h2>Day 5｜12/14（一）彈性行程／大雪備案</h2>
+    <p class="sub">保留一天緩衝，避免行程被天氣打亂</p>
+    <div class="item"><div class="time">全天</div><div><h3>彈性安排</h3><p>同 Day 4，可補買伴手禮、補吃想吃的餐廳。</p></div></div>
+    <div class="stay">🏨 住宿：札幌</div>
+  </section>
+
+  <section class="day" id="day6">
+    <h2>Day 6｜12/15（二）返程</h2>
+    <p class="sub">搭計程車前往機場，準備回家</p>
+    <div class="item"><div class="time">08:30–09:30</div><div><h3>計程車前往新千歲機場</h3><p>預留時間給雪天路況。</p></div></div>
+    <div class="item"><div class="time">11:55</div><div><h3>新千歲機場起飛</h3><p>飛往桃園國際機場，平安回家。</p></div></div>
+  </section>
+
+  <section class="spots" id="spots">
+    <h2>各景點與吃</h2>
+    <p class="sub">點連結直接開啟 Google Maps，依地區分類。灰色虛線＝Google 地圖評分低於 4.0（2026/10/25 查詢）</p>
+    <div class="region">
+      <h3>札幌市區</h3>
+      <div class="group">
+        <h4>🍽️ 吃</h4>
+        <ul class="links">
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E8%9F%B9%E5%BA%A7+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 蟹座</a></li>
+          <li><a class="warn" href="https://www.google.com/maps/search/?api=1&query=%E9%9B%AA%E5%8D%B0+the+butter+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 雪印 the butter</a><span class="note">Google 3.4｜評價不好</span></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E6%B5%B7%E9%AE%AE%E4%B8%BC%E5%B0%82%E9%96%80%E5%BA%97+%E5%AF%BF%E5%8F%B8%E3%81%A9%E3%82%93%E3%81%B6%E3%82%8A+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 海鮮丼專門店 寿司どんぶり</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=Majisand+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 Majisand</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=Tiger+curry+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 Tiger Curry</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E7%B5%B5%E3%81%AB%E6%8F%8F%E3%81%84%E3%81%9F%E9%A4%85+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 絵に描いた餅</a><span class="note">住宿旁步行約 10 分鐘</span></li>
+          <li><a class="warn" href="https://www.google.com/maps/search/?api=1&query=morimoto+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 Morimoto</a><span class="note">Google 3.8–3.9（札幌兩家分店）</span></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E5%8F%82%E5%85%83%E8%B1%9A%E7%A0%94%E7%A9%B6%E6%89%80+%E5%8C%977%E6%9D%A1%E6%9C%AD%E5%B9%8C%E5%BA%97" target="_blank" rel="noopener">📍 參元豚研究所 北7條札幌店</a></li>
+        </ul>
+      </div>
+      <div class="group">
+        <h4>🎡 景點</h4>
+        <ul class="links">
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E3%83%9F%E3%83%A5%E3%83%B3%E3%83%98%E3%83%B3%E3%83%BB%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%9E%E3%82%B9%E5%B8%82+%E6%9C%AD%E5%B9%8C+%E5%A4%A7%E9%80%9A%E5%85%AC%E5%9C%92" target="_blank" rel="noopener">📍 札幌慕尼黑聖誕市場</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E7%8B%B8%E5%B0%8F%E8%B7%AF%E5%95%86%E5%BA%97%E8%A1%97+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 狸小路商店街</a><span class="note">原寫「貍小貓商店」，暫以狸小路搜尋</span></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E8%AB%8F%E8%A8%AA%E7%A5%9E%E7%A4%BE+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 諏訪神社</a></li>
+          <li><a class="warn" href="https://www.google.com/maps/search/?api=1&query=%E4%BA%8C%E6%9D%A1%E5%B8%82%E5%A0%B4+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 二條市場</a><span class="note">Google 3.8</span></li>
+        </ul>
+      </div>
+      <div class="group">
+        <h4>🎁 伴手禮</h4>
+        <ul class="links">
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E3%83%AB%E3%82%BF%E3%82%AA+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 LeTAO</a></li>
+          <li><a class="warn" href="https://www.google.com/maps/search/?api=1&query=%E6%A5%B5%E4%B8%8A+%E3%83%97%E3%83%AA%E3%83%B3+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 極上布丁</a><span class="note">Google 3.7（比對到「プリン本舗」，請確認店名）</span></li>
+          <li><a class="warn" href="https://www.google.com/maps/search/?api=1&query=snow+cheese+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 Snow Cheese</a><span class="note">Google 3.5</span></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E3%83%91%E3%83%AA%E3%81%A9%E3%82%89+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 巴里銅鑼專賣店</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E6%9C%AD%E5%B9%8C%E8%BE%B2%E5%AD%A6%E6%A0%A1+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 札幌農學校</a></li>
+          <li><a class="warn" href="https://www.google.com/maps/search/?api=1&query=%E3%83%96%E3%83%A9%E3%82%A6%E3%83%B3%E3%83%81%E3%83%BC%E3%82%BA+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 Brown Cheese</a><span class="note">Google 3.4（僅 5 則評論）</span></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E3%82%AC%E3%83%88%E3%83%BC%E3%83%95%E3%82%A7%E3%82%B9%E3%82%BF+%E3%83%8F%E3%83%A9%E3%83%80+%E5%A4%A7%E4%B8%B8%E6%9C%AD%E5%B9%8C%E5%BA%97" target="_blank" rel="noopener">📍 Gateau Festa Harada 大丸札幌店</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E5%8C%97%E8%8F%93%E6%A5%BC+%E6%9C%AD%E5%B9%8C%E6%9C%AC%E9%A4%A8" target="_blank" rel="noopener">📍 北菓樓</a></li>
+        </ul>
+      </div>
+      <div class="group">
+        <h4>🛍️ 服裝與家電</h4>
+        <ul class="links">
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E3%83%A6%E3%83%8B%E3%82%AF%E3%83%AD+%E6%9C%AD%E5%B9%8C+%E6%9D%B1%E6%80%A5%E7%99%BE%E8%B2%A8%E5%BA%97" target="_blank" rel="noopener">📍 東急 Uniqlo（北海道限定）</a></li>
+          <li><a class="warn" href="https://www.google.com/maps/search/?api=1&query=%E3%83%93%E3%83%83%E3%82%AF%E3%82%AB%E3%83%A1%E3%83%A9+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 東急 Big Camera</a><span class="note">Google 3.9</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="region">
+      <h3>札幌外圍</h3>
+      <div class="group">
+        <h4>🍽️ 吃</h4>
+        <ul class="links">
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E3%83%88%E3%83%AA%E3%83%88%E3%83%B3+%E5%9B%9E%E8%BB%A2%E5%AF%BF%E5%8F%B8+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 トリトン迴轉壽司（共 3 家）</a><span class="note">搜尋後可看到 3 家分店</span></li>
+          <li><a class="warn" href="https://www.google.com/maps/search/?api=1&query=grill+%26+hamburger+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 Grill & Hamburger</a><span class="note">Google 3.9（比對到 MonsterSUN，請確認）</span></li>
+        </ul>
+      </div>
+      <div class="group">
+        <h4>🎡 景點</h4>
+        <ul class="links">
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E5%8C%97%E6%B5%B7%E9%81%93%E7%A5%9E%E5%AE%AE" target="_blank" rel="noopener">📍 北海道神宮</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E5%86%86%E5%B1%B1%E5%8B%95%E7%89%A9%E5%9C%92" target="_blank" rel="noopener">📍 圓山動物園</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E7%99%BD%E3%81%84%E6%81%8B%E4%BA%BA%E3%83%91%E3%83%BC%E3%82%AF" target="_blank" rel="noopener">📍 白色戀人工廠（石屋製菓）</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E5%85%AD%E8%8A%B1%E4%BA%AD+%E7%A5%9E%E5%AE%AE%E8%8C%B6%E5%B1%8B%E5%BA%97" target="_blank" rel="noopener">📍 六花亭 神宮茶屋店</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="region">
+      <h3>小樽</h3>
+      <div class="group">
+        <h4>🍽️ 吃</h4>
+        <ul class="links">
+          <li><a class="warn" href="https://www.google.com/maps/search/?api=1&query=%E5%B0%8F%E6%A8%BD%E5%92%8C%E7%89%9B+%E9%BB%92%E6%BE%A4+%E5%A0%BA%E7%94%BA%E9%80%9A%E3%82%8A%E5%BA%97" target="_blank" rel="noopener">📍 小樽和牛黑澤 堺町通店</a><span class="note">Google 3.4｜評價不好，高機率 pass</span></li>
+        </ul>
+      </div>
+      <div class="group">
+        <h4>🎡 景點</h4>
+        <ul class="links">
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E5%B0%8F%E6%A8%BD%E3%82%AA%E3%83%AB%E3%82%B4%E3%83%BC%E3%83%AB%E5%A0%82" target="_blank" rel="noopener">📍 小樽音樂盒堂</a></li>
+        </ul>
+      </div>
+      <div class="group">
+        <h4>🎁 伴手禮</h4>
+        <ul class="links">
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E5%85%AD%E8%8A%B1%E4%BA%AD+%E5%B0%8F%E6%A8%BD" target="_blank" rel="noopener">📍 六花亭</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="region">
+      <h3>地區待確認</h3>
+      <div class="group">
+        <h4>📝 尚未標註地區</h4>
+        <ul class="links">
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E7%84%BC%E8%82%89+%E5%BE%B3%E5%AF%BF+%E5%8C%97%E6%B5%B7%E9%81%93" target="_blank" rel="noopener">📍 燒肉德壽</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E5%AE%9D%E7%9F%B3+%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC+%E5%8C%97%E6%B5%B7%E9%81%93" target="_blank" rel="noopener">📍 寶石餅乾</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="tips" id="tips">
+    <h2>冬季小提醒</h2>
+    <ul>
+      <li>穿防滑雪鞋，並採洋蔥式穿搭。</li>
+      <li>手機建議帶保暖套或暖暖包，低溫會掉電。</li>
+      <li>12/13、12/14 是大雪備案日，行程可依天氣調整。</li>
+      <li>返程當天雪天路況不確定，計程車預約與出發時間要抓寬鬆。</li>
+      <li>熱門餐廳建議事先訂位。</li>
+      <li>不要單獨行動，出門盡量結伴。</li>
+      <li>身體不適要說，不要硬撐。</li>
+    </ul>
+  </section>
+</main>
+
+<footer>© 北海道旅遊示範頁面</footer>
+</body>
+</html>
