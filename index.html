@@ -159,6 +159,9 @@ main{max-width:760px;margin:0 auto;padding:32px 18px 56px}
   .jr-table td:first-child{white-space:nowrap}
   .jr-table .tt{white-space:nowrap}
 }
+.map-embed{margin:12px 0 4px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bg)}
+.map-embed iframe{display:block;width:100%;height:480px;border:0}
+@media (max-width:600px){.map-embed iframe{height:420px}}
 footer{text-align:center;color:var(--muted);padding:24px;font-size:.85rem}
 @media (max-width:480px){.time{flex-basis:84px}.day{padding:20px 16px}}
 </style>
@@ -497,7 +500,8 @@ footer{text-align:center;color:var(--muted);padding:24px;font-size:.85rem}
 
   <section class="spots" id="spots">
     <h2>各景點與吃</h2>
-    <p class="sub">點連結直接開啟 Google Maps，依地區分類。灰色虛線＝Google 地圖評分低於 4.0（2026/10/25 查詢）</p>
+    <p class="sub">下方地圖可以直接點 pin 針看店家資訊；地圖下面的連結可開啟 Google Maps，依地區分類。灰色虛線＝Google 地圖評分低於 4.0（2026/10/25 查詢）</p>
+    <div class="map-embed"><iframe src="https://www.google.com/maps/d/embed?mid=1YyArlU-LXNf9ucw852DeLWq7ETAXvYQ&ehbc=2E312F" title="北海道景點與吃地圖" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe></div>
     <div class="region">
       <h3>札幌市區</h3>
       <div class="group">
