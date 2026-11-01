@@ -162,6 +162,13 @@ main{max-width:760px;margin:0 auto;padding:32px 18px 56px}
 .map-embed{margin:12px 0 4px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bg)}
 .map-embed iframe{display:block;width:100%;height:480px;border:0}
 @media (max-width:600px){.map-embed iframe{height:420px}}
+.map-open{display:inline-block;margin:6px 0 2px;padding:8px 16px;border-radius:999px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;font-size:.92rem}
+.map-embed{position:relative}
+.map-lock{display:none}
+@media (max-width:600px){
+  .map-lock{display:flex;position:absolute;inset:0;z-index:2;align-items:center;justify-content:center;background:rgba(15,36,71,.35);color:#fff;font-weight:700;font-size:1rem;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+  .map-embed iframe{height:360px}
+}
 footer{text-align:center;color:var(--muted);padding:24px;font-size:.85rem}
 @media (max-width:480px){.time{flex-basis:84px}.day{padding:20px 16px}}
 </style>
@@ -501,7 +508,8 @@ footer{text-align:center;color:var(--muted);padding:24px;font-size:.85rem}
   <section class="spots" id="spots">
     <h2>各景點與吃</h2>
     <p class="sub">下方地圖可以直接點 pin 針看店家資訊；地圖下面的連結可開啟 Google Maps，依地區分類。灰色虛線＝Google 地圖評分低於 4.0（2026/10/25 查詢）</p>
-    <div class="map-embed"><iframe src="https://www.google.com/maps/d/embed?mid=1YyArlU-LXNf9ucw852DeLWq7ETAXvYQ&ehbc=2E312F" title="北海道景點與吃地圖" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    <a class="map-open" href="https://www.google.com/maps/d/viewer?mid=1YyArlU-LXNf9ucw852DeLWq7ETAXvYQ" target="_blank" rel="noopener">🗺️ 用 Google 地圖全螢幕開啟（手機建議用這個）</a>
+    <div class="map-embed"><div class="map-lock" onclick="this.remove()">👆 點一下開始操作地圖</div><iframe src="https://www.google.com/maps/d/embed?mid=1YyArlU-LXNf9ucw852DeLWq7ETAXvYQ&ehbc=2E312F" title="北海道景點與吃地圖" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe></div>
     <div class="region">
       <h3>札幌市區</h3>
       <div class="group">
