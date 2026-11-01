@@ -80,6 +80,22 @@ main{max-width:760px;margin:0 auto;padding:32px 18px 56px}
 .item{display:flex;gap:14px;padding:12px 0;border-top:1px dashed var(--line)}
 .item:first-of-type{border-top:none}
 .time{flex:0 0 96px;font-weight:700;font-size:.88rem;color:var(--accent)}
+.time.dual{flex:0 0 136px;display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+.tz{display:inline-block;padding:1px 9px;border-radius:999px;font-size:.78rem;font-weight:700;white-space:nowrap}
+.tz.tw{background:var(--accent-soft);color:var(--accent)}
+.tz.jp{background:rgba(245,166,35,.18);color:#a65f00}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tz.jp{color:#ffc766}}
+:root[data-theme="dark"] .tz.jp{color:#ffc766}
+.tz-legend{display:flex;flex-wrap:wrap;gap:8px;margin:-6px 0 10px}
+.time.fly{flex-direction:row;justify-content:space-between;align-items:flex-start;padding-right:8px}
+.time.fly .plane{display:inline-block;line-height:0;animation:takeoff 2.6s ease-in-out infinite}
+.time.fly .plane svg{width:30px;height:15px;display:block}
+@keyframes takeoff{0%{transform:translate(-10px,32px) rotate(-18deg) scale(.85);opacity:0}15%{opacity:1}70%{opacity:1}100%{transform:translate(14px,-10px) rotate(-18deg) scale(1.15);opacity:0}}
+@media (prefers-reduced-motion:reduce){.time.fly .plane{animation:none}}
+.time.fly .plane.land{animation:landing 2.6s ease-in-out infinite}
+@keyframes landing{0%{transform:translate(-12px,-10px) rotate(14deg) scale(1.15);opacity:0}15%{opacity:1}70%{transform:translate(10px,17px) rotate(5deg) scale(.85);opacity:1}100%{transform:translate(14px,20px) rotate(0deg) scale(.85);opacity:0}}
+@media (prefers-reduced-motion:reduce){.time.fly .plane.land{animation:none}}
+.tz-legend .tz{font-size:.85rem;padding:3px 12px}
 .item h3{font-size:1.02rem}
 .item p{color:var(--muted);font-size:.93rem}
 .stay{
@@ -105,6 +121,30 @@ main{max-width:760px;margin:0 auto;padding:32px 18px 56px}
 .links a:hover{text-decoration:underline}
 .links a.warn{background:transparent;border:1px dashed var(--muted);color:var(--muted)}
 .links .note{font-size:.78rem;color:var(--muted);padding:2px 12px 0}
+.item>div:nth-child(2){min-width:0;flex:1}
+.jr{margin-top:10px;border:1px solid var(--line);border-radius:12px;padding:8px 12px;background:var(--bg)}
+.jr summary{cursor:pointer;font-weight:700;color:var(--accent);font-size:.93rem}
+.jr-wrap{overflow-x:auto;margin-top:8px}
+.jr-table{width:100%;border-collapse:collapse;font-size:.88rem;white-space:nowrap}
+.jr-table th,.jr-table td{padding:6px 24px 6px 8px;border-bottom:1px solid var(--line);text-align:left}
+.jr-table th:last-child,.jr-table td:last-child{padding-right:8px}
+.jr-table th:nth-child(3):last-child,.jr-table td:nth-child(3):last-child{border-left:1px solid var(--line);padding-left:20px}
+.jr-table th{color:var(--muted);font-weight:600}
+.jr-table tr.rec td{background:var(--accent-soft);font-weight:700}
+.remind{margin-top:10px;padding:8px 12px;border-radius:10px;background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:.9rem}
+.tt{display:inline-block;padding:1px 9px;border-radius:999px;font-size:.78rem;font-weight:700;white-space:nowrap}
+.tt.sp{background:rgba(214,60,80,.14);color:#b8293d}
+.tt.rp{background:rgba(245,140,20,.16);color:#b05a00}
+.tt.sr{background:rgba(40,160,90,.15);color:#1f7a45}
+.tt.lc{background:rgba(47,111,179,.14);color:#2f6fb3}
+.tt.ltd{background:rgba(124,92,214,.14);color:#6a4bc4}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tt.sp{color:#ff9aa6}:root:not([data-theme="light"]) .tt.rp{color:#ffb866}:root:not([data-theme="light"]) .tt.sr{color:#6fd79a}:root:not([data-theme="light"]) .tt.lc{color:#7ab6ee}:root:not([data-theme="light"]) .tt.ltd{color:#b9a4f5}}
+:root[data-theme="dark"] .tt.sp{color:#ff9aa6}:root[data-theme="dark"] .tt.rp{color:#ffb866}:root[data-theme="dark"] .tt.sr{color:#6fd79a}:root[data-theme="dark"] .tt.lc{color:#7ab6ee}:root[data-theme="dark"] .tt.ltd{color:#b9a4f5}
+.jr-legend{list-style:none;margin-top:12px;display:grid;gap:6px;font-size:.85rem;color:var(--muted)}
+.jr-legend .seat{padding:8px 10px;border-radius:10px;background:var(--accent-soft);color:var(--text)}
+.jr-note{margin-top:8px;font-size:.8rem;color:var(--muted)}
+.jr-note a{color:var(--accent)}
+.item .step{margin-top:14px;color:var(--text);font-size:.95rem}
 footer{text-align:center;color:var(--muted);padding:24px;font-size:.85rem}
 @media (max-width:480px){.time{flex-basis:84px}.day{padding:20px 16px}}
 </style>
@@ -143,34 +183,278 @@ footer{text-align:center;color:var(--muted);padding:24px;font-size:.85rem}
 <main>
   <section class="day" id="day1">
     <h2>Day 1｜12/10（四）出發・抵達札幌</h2>
-    <p class="sub">台灣時間 06:00 出發，08:45 起飛</p>
-    <div class="item"><div class="time">06:00</div><div><h3>潮州出發</h3><p>搭計程車前往高雄國際機場（台灣時間）。</p></div></div>
-    <div class="item"><div class="time">08:45</div><div><h3>高雄起飛</h3><p>高雄國際機場飛往新千歲機場（台灣時間）。</p></div></div>
-    <div class="item"><div class="time">13:40</div><div><h3>抵達新千歲機場</h3><p>以下皆為日本時間。</p></div></div>
-    <div class="item"><div class="time">14:00–16:30</div><div><h3>前往飯店</h3><p>途中可順道逛新千歲機場。</p></div></div>
-    <div class="item"><div class="time">17:00–20:00</div><div><h3>狸小路 &amp; 二條市場</h3><p>逛街、買東西、找晚餐。</p></div></div>
-    <div class="stay">💡 二條市場不少攤位傍晚就收，建議先逛二條市場，再逛營業到較晚的狸小路。</div>
+    <p class="sub">前兩項為台灣時間，抵達新千歲機場後為日本時間（日本比台灣快 1 小時）</p>
+    <div class="item"><div class="time dual"><span class="tz tw">🇹🇼 06:00</span></div><div><h3>潮州出發</h3><p>搭計程車前往高雄國際機場（台灣時間）。</p></div></div>
+    <div class="item"><div class="time dual fly"><span class="tz tw">🇹🇼 08:45</span><span class="plane"><svg viewBox="0 0 64 32" aria-hidden="true"><path d="M6 11 L2 2 L12 2 L19 11Z" fill="#ff7a00"/><path d="M4 2 L8 2 L11 8 L7 8Z" fill="#3a1f0a"/><path d="M28 18 L20 30 L32 30 L43 18Z" fill="#e05a00"/><path d="M4 14 Q4 10 10 10 L50 10 Q60 12 62 16 Q60 20 50 22 L10 22 Q4 20 4 14Z" fill="#ff7a00"/><path d="M18 10 L23 10 L19 22 L14 22Z M29 10 L34 10 L30 22 L25 22Z M40 10 L45 10 L41 22 L36 22Z" fill="#3a1f0a" opacity=".85"/><path d="M52 12.5 L58 14 L58 16 L51 16Z" fill="#fff3d6"/></svg></span></div><div><h3>高雄起飛</h3><p>高雄國際機場飛往新千歲機場（台灣時間）。</p></div></div>
+    <div class="item"><div class="time dual fly"><span class="tz jp">🇯🇵 13:40</span><span class="plane land"><svg viewBox="0 0 64 32" aria-hidden="true"><path d="M6 11 L2 2 L12 2 L19 11Z" fill="#ff7a00"/><path d="M4 2 L8 2 L11 8 L7 8Z" fill="#3a1f0a"/><path d="M28 18 L20 30 L32 30 L43 18Z" fill="#e05a00"/><path d="M4 14 Q4 10 10 10 L50 10 Q60 12 62 16 Q60 20 50 22 L10 22 Q4 20 4 14Z" fill="#ff7a00"/><path d="M18 10 L23 10 L19 22 L14 22Z M29 10 L34 10 L30 22 L25 22Z M40 10 L45 10 L41 22 L36 22Z" fill="#3a1f0a" opacity=".85"/><path d="M52 12.5 L58 14 L58 16 L51 16Z" fill="#fff3d6"/></svg></span></div><div><h3>抵達新千歲機場</h3><p>飛行約 3 小時 55 分。</p></div></div>
+    <div class="item"><div class="time dual"><span class="tz jp">🇯🇵 14:00–16:30</span></div><div><h3>前往飯店｜AONO STAY SAPPORO（Check-in 15:00 起）</h3><p>搭乘 JR 快速エアポート（新千歲機場 → 札幌）</p>
+      <details class="jr">
+        <summary>🚆 JR 時刻表｜新千歲機場 → 札幌（平日）</summary>
+        <div class="jr-wrap"><table class="jr-table">
+          <thead><tr><th>發車</th><th>車種</th><th>終點</th><th>抵達札幌</th></tr></thead>
+          <tbody>
+            <tr><td>14:09</td><td><span class="tt sr">區間快速</span></td><td>札幌</td><td>14:52（43 分）</td></tr>
+            <tr><td>14:19</td><td><span class="tt rp">快速</span></td><td>小樽（經札幌）</td><td>14:57（38 分）</td></tr>
+            <tr><td>14:29</td><td><span class="tt rp">快速</span></td><td>札幌</td><td>15:06（37 分）</td></tr>
+            <tr><td>14:39</td><td><span class="tt sr">區間快速</span></td><td>札幌</td><td>15:23（44 分）</td></tr>
+            <tr><td>14:50</td><td><span class="tt sp">特別快速</span></td><td>小樽（經札幌）</td><td>15:26（36 分）</td></tr>
+            <tr><td>14:59</td><td><span class="tt rp">快速</span></td><td>札幌</td><td>15:36（37 分）</td></tr>
+            <tr><td>15:09</td><td><span class="tt sr">區間快速</span></td><td>札幌</td><td>15:52（43 分）</td></tr>
+            <tr><td>15:20</td><td><span class="tt rp">快速</span></td><td>小樽（經札幌）</td><td>15:57（37 分）</td></tr>
+            <tr><td>15:29</td><td><span class="tt rp">快速</span></td><td>札幌</td><td>16:07（38 分）</td></tr>
+            <tr><td>15:39</td><td><span class="tt sr">區間快速</span></td><td>札幌</td><td>16:23（44 分）</td></tr>
+            <tr><td>15:50</td><td><span class="tt sp">特別快速</span></td><td>小樽（經札幌）</td><td>16:26（36 分）</td></tr>
+            <tr><td>15:59</td><td><span class="tt rp">快速</span></td><td>札幌</td><td>16:37（38 分）</td></tr>
+          </tbody>
+        </table></div>
+        <ul class="jr-legend">
+          <li><span class="tt sp">特別快速</span> 札幌↔新千歲機場只停新札幌、南千歲，最快約 36 分。</li>
+          <li><span class="tt rp">快速</span> 停站少，最快約 37 分，部分班次直通小樽。</li>
+          <li><span class="tt sr">區間快速</span> 日間才有，停站比快速多，約 43 分。</li>
+          <li><span class="tt lc">普通</span> 每站都停，最慢。</li>
+          <li class="seat">🪑 <b>座位：</b>エアポート（特別快速、快速、區間快速）是 6 節車廂，<b>4 號車是指定席「uシート」</b>，其餘 <b>1–3、5–6 號共 5 節是自由席</b>。自由席不用加錢，直接上車坐；uシート要另加錢，車站買 1,000 日圓，用えきねっと網路訂 800 日圓，可以保證有位子、行李也比較好放。</li>
+        </ul>
+        <p class="jr-note">表中是 14:00–16:00 發車的班次，抵達時間與所需分鐘參考 NAVITIME 時刻表，12/10 是週四所以看平日時刻；入境和領行李要花時間，請依實際出關時間選班次。時刻是 2026 年秋季查到的，12 月可能調整，出發前請以官方為準：<a href="https://www.jrhokkaido.co.jp/airport/" target="_blank" rel="noopener">JR 北海道｜エアポート</a></p>
+      </details>
+      <p class="step">🚇 接著搭地下鐵南北線：<b>札幌 → 中島公園</b>（往真駒內方向，約 5 分，中途經大通、すすきの）</p>
+      <details class="jr">
+        <summary>🚇 地下鐵南北線時刻表｜さっぽろ → 中島公園（平日）</summary>
+        <div class="jr-wrap"><table class="jr-table">
+          <thead><tr><th>時</th><th>札幌發車（分）</th><th>抵達中島公園（約 +5 分）</th></tr></thead>
+          <tbody>
+            <tr><td>14 時</td><td>04 · 11 · 18 · 25 · 32 · 39 · 46 · 53</td><td>09 · 16 · 23 · 30 · 37 · 44 · 51 · 58</td></tr>
+            <tr><td>15 時</td><td>00 · 07 · 14 · 21 · 28 · 35 · 42 · 48 · 56</td><td>05 · 12 · 19 · 26 · 33 · 40 · 47 · 53 · 16:01</td></tr>
+            <tr><td>16 時</td><td>03 · 10 · 17 · 24 · 32 · 38 · 44 · 49 · 54</td><td>08 · 15 · 22 · 29 · 37 · 43 · 49 · 54 · 59</td></tr>
+            <tr><td>17 時</td><td>00 · 05 · 10 · 15 · 20 · 25 · 30 · 36 · 41 · 46 · 51 · 56</td><td>05 · 10 · 15 · 20 · 25 · 30 · 35 · 41 · 46 · 51 · 56 · 18:01</td></tr>
+          </tbody>
+        </table></div>
+        <p class="jr-note">乘車時間約 5 分（札幌 → 大通 → すすきの → 中島公園，共 3 站），抵達時間是用發車時間加 5 分估算的。全部是往真駒內方向的平日時刻，來自札幌市交通局官網（2026/8/1 更新）。日間約每 7 分一班，傍晚尖峰約每 5 分一班。JR 札幌站有地下通道可走到地下鐵さっぽろ站，月台以站內指示為準。出發前可再確認：<a href="https://www.city.sapporo.jp/st/subway/route_time/h26/n06.html" target="_blank" rel="noopener">札幌市交通局｜南北線さっぽろ駅時刻表</a></p>
+      </details>
+      <p class="step">🚶 在中島公園站下車後，步行前往 AONO STAY SAPPORO（飯店地址和車站同在南9条西4丁目）。</p></div></div>
+    <div class="item"><div class="time dual"><span class="tz jp">🇯🇵 17:00–20:00</span></div><div><h3>狸小路（搭乘地下鐵後走路過去）</h3><p>逛街、買東西、找晚餐。</p>
+      <p class="step">🚇 去程：搭地下鐵南北線 <b>中島公園 → すすきの</b>（往麻生方向，約 2 分，1 站）</p>
+      <details class="jr">
+        <summary>🚇 南北線時刻表｜中島公園 → すすきの（平日）</summary>
+        <div class="jr-wrap"><table class="jr-table">
+          <thead><tr><th>時</th><th>中島公園發車（分）</th><th>抵達すすきの（約 +2 分）</th></tr></thead>
+          <tbody>
+            <tr><td>16 時</td><td>06 · 13 · 19 · 24 · 29 · 34 · 39 · 44 · 50 · 55</td><td>08 · 15 · 21 · 26 · 31 · 36 · 41 · 46 · 52 · 57</td></tr>
+            <tr><td>17 時</td><td>00 · 06 · 11 · 16 · 21 · 26 · 31 · 36 · 42 · 47 · 52 · 57</td><td>02 · 08 · 13 · 18 · 23 · 28 · 33 · 38 · 44 · 49 · 54 · 59</td></tr>
+          </tbody>
+        </table></div>
+        <p class="jr-note">往麻生方向的平日時刻，選 16–17 時是因為你預計 17:00 開始逛狸小路。抵達時間是用發車時間加 2 分估算的（站間所需時間約 2 分），實際可能差 1 分鐘。出發前可再確認：<a href="https://www.city.sapporo.jp/st/subway/route_time/h26/n09.html" target="_blank" rel="noopener">札幌市交通局｜南北線中島公園駅時刻表</a></p>
+      </details>
+      <p class="step">🚇 回程：搭地下鐵南北線 <b>すすきの → 中島公園</b>（往真駒內方向，約 2 分，1 站）</p>
+      <details class="jr">
+        <summary>🚇 南北線時刻表｜すすきの → 中島公園（平日）</summary>
+        <div class="jr-wrap"><table class="jr-table">
+          <thead><tr><th>時</th><th>すすきの發車（分）</th><th>抵達中島公園（約 +2 分）</th></tr></thead>
+          <tbody>
+            <tr><td>19 時</td><td>01 · 06 · 11 · 16 · 21 · 27 · 32 · 37 · 43 · 48 · 54 · 59</td><td>03 · 08 · 13 · 18 · 23 · 29 · 34 · 39 · 45 · 50 · 56 · 20:01</td></tr>
+            <tr><td>20 時</td><td>06 · 14 · 22 · 30 · 38 · 46 · 54</td><td>08 · 16 · 24 · 32 · 40 · 48 · 56</td></tr>
+            <tr><td>21 時</td><td>02 · 10 · 18 · 26 · 34 · 42 · 50 · 58</td><td>04 · 12 · 20 · 28 · 36 · 44 · 52 · 22:00</td></tr>
+          </tbody>
+        </table></div>
+        <p class="remind">⏰ 提醒：末班車是 00:12 從すすきの發車（已是隔天凌晨），請提早到站，不要錯過。</p>
+        <p class="jr-note">往真駒內方向的平日時刻，列出 19–21 時，涵蓋 20:00 逛完前後的班次，22–23 時的班次沒有列出。抵達時間同樣是發車時間加 2 分估算的。出發前可再確認：<a href="https://www.city.sapporo.jp/st/subway/route_time/h26/n08.html" target="_blank" rel="noopener">札幌市交通局｜南北線すすきの駅時刻表</a></p>
+      </details></div></div>
+    <div class="stay">💡 二條市場可能下午就收，所以第一天先逛營業到較晚的狸小路，二條市場之後再排進彈性行程。</div>
     <div class="stay">🏨 住宿：札幌</div>
   </section>
 
   <section class="day" id="day2">
     <h2>Day 2｜12/11（五）小樽一日</h2>
     <p class="sub">搭電車往返小樽，慢慢逛</p>
-    <div class="item"><div class="time">10:00–11:00</div><div><h3>抵達小樽</h3><p>從札幌搭 JR 前往。</p></div></div>
-    <div class="item"><div class="time">11:00–12:00</div><div><h3>午餐</h3><p>小樽在地美食。</p></div></div>
-    <div class="item"><div class="time">12:00–18:00</div><div><h3>商店街散策</h3><p>音樂盒堂、堺町通一帶慢慢逛。</p></div></div>
-    <div class="item"><div class="time">18:00–19:30</div><div><h3>小樽晚餐</h3><p>用完餐再回札幌。</p></div></div>
+    <div class="item"><div class="time dual"><span class="tz jp">🇯🇵 10:00</span></div><div><h3>從飯店出發（走路到中島公園站）</h3><p>前往小樽：先搭地下鐵南北線，再在札幌轉搭 JR 快速エアポート。</p>
+      <p class="step">🚇 先搭地下鐵南北線：<b>中島公園 → さっぽろ</b>（往麻生方向，約 5 分，中途經すすきの、大通）</p>
+      <details class="jr">
+        <summary>🚇 南北線時刻表｜中島公園 → さっぽろ（平日）</summary>
+        <div class="jr-wrap"><table class="jr-table">
+          <thead><tr><th>時</th><th>中島公園發車（分）</th><th>抵達さっぽろ（約 +5 分）</th></tr></thead>
+          <tbody>
+            <tr><td>10 時</td><td>02 · 09 · 15 · 23 · 30 · 37 · 44 · 51 · 58</td><td>07 · 14 · 20 · 28 · 35 · 42 · 49 · 56 · 11:03</td></tr>
+            <tr><td>11 時</td><td>05 · 12 · 19 · 26 · 33 · 40 · 47 · 54</td><td>10 · 17 · 24 · 31 · 38 · 45 · 52 · 59</td></tr>
+          </tbody>
+        </table></div>
+        <p class="jr-note">往麻生方向的平日時刻，列出 10–11 時。抵達時間是用發車時間加 5 分估算的（站間所需時間約 5 分），實際可能差 1 分鐘。出發前可再確認：<a href="https://www.city.sapporo.jp/st/subway/route_time/h26/n09.html" target="_blank" rel="noopener">札幌市交通局｜南北線中島公園駅時刻表</a></p>
+      </details>
+      <p class="step">🚆 在札幌站轉搭 JR 快速エアポート：<b>札幌 → 小樽</b>（小樽行，約 35–41 分）</p>
+      <details class="jr">
+        <summary>🚆 JR 時刻表｜札幌 → 小樽（エアポート）</summary>
+        <div class="jr-wrap"><table class="jr-table">
+          <thead><tr><th>札幌發車</th><th>車種</th><th>終點</th><th>抵達小樽</th></tr></thead>
+          <tbody>
+            <tr><td>10:00</td><td><span class="tt rp">快速</span></td><td>小樽</td><td>10:41（41 分）</td></tr>
+            <tr><td>10:06</td><td><span class="tt lc">普通</span></td><td>小樽</td><td>10:52（46 分）</td></tr>
+            <tr><td>10:23</td><td><span class="tt lc">普通</span></td><td>小樽</td><td>11:14（51 分）</td></tr>
+            <tr class="rec"><td>10:30</td><td><span class="tt sp">特別快速</span></td><td>小樽</td><td>11:05（35 分）</td></tr>
+            <tr><td>11:00</td><td><span class="tt rp">快速</span></td><td>小樽</td><td>11:41（41 分）</td></tr>
+            <tr><td>11:06</td><td><span class="tt lc">普通</span></td><td>小樽</td><td>11:52（46 分）</td></tr>
+            <tr><td>11:22</td><td><span class="tt lc">普通</span></td><td>小樽</td><td>12:14（52 分）</td></tr>
+            <tr><td>11:30</td><td><span class="tt sp">特別快速</span></td><td>小樽</td><td>12:05（35 分）</td></tr>
+            <tr><td>12:00</td><td><span class="tt rp">快速</span></td><td>小樽</td><td>12:41（41 分）</td></tr>
+            <tr><td>12:24</td><td><span class="tt lc">普通</span></td><td>小樽</td><td>13:15（51 分）</td></tr>
+            <tr><td>12:30</td><td><span class="tt sp">特別快速</span></td><td>小樽</td><td>13:05（35 分）</td></tr>
+</tbody>
+        </table></div>
+        <ul class="jr-legend">
+          <li><span class="tt sp">特別快速</span> 札幌 → 小樽約 35 分，最快。</li>
+          <li><span class="tt rp">快速</span> 札幌 → 小樽約 41 分。</li>
+          <li><span class="tt lc">普通</span> 每站停車，札幌 → 小樽約 46–52 分，比エアポート慢，但小樽站也是終點，不用轉車。</li>
+          <li class="seat">🪑 <b>座位：</b>エアポート（特別快速、快速）是 6 節車廂，<b>4 號車是指定席「uシート」</b>，其餘 <b>1–3、5–6 號共 5 節是自由席</b>。自由席不用加錢，直接上車坐；uシート要另加錢，車站買 1,000 日圓，用えきねっと網路訂 800 日圓，可以保證有位子、行李也比較好放。</li>
+        </ul>
+        <p class="remind">🕙 建議路線：10:09 搭地下鐵 → 10:14 到さっぽろ → 10:30 搭特別快速エアポート → 約 11:05 抵達小樽。轉車時間約 16 分鐘，要含走到 JR 札幌站月台的時間；如果錯過 10:30，下一班是 11:00 的快速，約 11:41 抵達。</p>
+        <p class="jr-note">這張表列出札幌直達小樽的班次（エアポート和普通）。札幌到小樽沒有區間快速，區間快速只往新千歲空港方向。時刻來自 NAVITIME，普通車在來源沒標車種，是依 Yahoo 路線資訊／駅探的時刻表對照判斷為普通，12 月可能調整，平日和假日也可能略有不同，出發前請以官方為準：<a href="https://www.jrhokkaido.co.jp/airport/" target="_blank" rel="noopener">JR 北海道｜エアポート</a></p>
+      </details>
+    </div></div>
+    <div class="item"><div class="time dual"><span class="tz jp">🇯🇵 約 11:05</span></div><div><h3>抵達小樽</h3><p>搭 10:30 的特別快速エアポート，約 11:05 抵達小樽站。</p></div></div>
+    <div class="item"><div class="time dual"><span class="tz jp">🇯🇵 11:00–12:00</span></div><div><h3>午餐</h3><p>小樽在地美食。</p></div></div>
+    <div class="item"><div class="time dual"><span class="tz jp">🇯🇵 12:00–18:00</span></div><div><h3>商店街散策</h3><p>音樂盒堂、堺町通一帶慢慢逛。</p></div></div>
+    <div class="item"><div class="time dual"><span class="tz jp">🇯🇵 18:00–19:30</span></div><div><h3>小樽晚餐</h3><p>用完餐再回札幌。</p></div></div>
+    <div class="item"><div class="time dual"><span class="tz jp">🇯🇵 20:00 後</span></div><div><h3>從小樽返回飯店</h3><p>搭 JR 回札幌，再轉南北線回中島公園。</p>
+      <p class="step">🚆 先搭 JR：<b>小樽 → 札幌</b>（約 45–50 分，不用轉車）</p>
+      <details class="jr">
+        <summary>🚆 JR 時刻表｜小樽 → 札幌（19:00 後）</summary>
+        <div class="jr-wrap"><table class="jr-table">
+          <thead><tr><th>小樽發車</th><th>車種</th><th>終點</th><th>抵達札幌</th></tr></thead>
+          <tbody>
+            <tr><td>19:00</td><td><span class="tt rp">快速</span></td><td>新千歲空港</td><td>19:34（34 分）</td></tr>
+            <tr><td>19:07</td><td><span class="tt lc">普通</span></td><td>江別</td><td>19:58（51 分）</td></tr>
+            <tr><td>19:27</td><td><span class="tt rp">快速</span></td><td>新千歲空港</td><td>20:01（34 分）</td></tr>
+            <tr><td>19:34</td><td><span class="tt lc">普通</span></td><td>江別</td><td>20:19（45 分）</td></tr>
+            <tr><td>19:56</td><td><span class="tt lc">普通</span></td><td>新千歲空港</td><td>20:41（45 分）</td></tr>
+            <tr class="rec"><td>20:22 <span style="font-size:.8em;color:var(--accent)">📌預定搭乘</span></td><td><span class="tt lc">普通</span></td><td>新千歲空港</td><td>21:11（49 分）</td></tr>
+            <tr><td>20:38</td><td><span class="tt lc">普通</span></td><td>岩見沢</td><td>21:23（45 分）</td></tr>
+            <tr><td>20:57</td><td><span class="tt lc">普通</span></td><td>江別</td><td>21:44（47 分）</td></tr>
+            <tr><td>21:16</td><td><span class="tt lc">普通</span></td><td>岩見沢</td><td>22:03（47 分）</td></tr>
+            <tr><td>21:37</td><td><span class="tt lc">普通</span></td><td>瀧川</td><td>22:24（47 分）</td></tr>
+            <tr><td>21:59</td><td><span class="tt lc">普通</span></td><td>苫小牧</td><td>22:44（45 分）</td></tr>
+            <tr><td>22:31</td><td><span class="tt lc">普通</span></td><td>札幌</td><td>23:17（46 分）</td></tr>
+            <tr><td>23:08</td><td><span class="tt lc">普通</span></td><td>岩見沢</td><td>23:53（45 分）</td></tr>
+          </tbody>
+        </table></div>
+        <ul class="jr-legend">
+          <li><span class="tt rp">快速</span> 小樽往札幌約 34 分。最後一班是 19:27 發車，20:00 後就沒有快速了。</li>
+          <li><span class="tt lc">普通</span> 每站停車，約 45–51 分。終點站各有不同，但都會經過札幌站。</li>
+        </ul>
+        <p class="remind">⏰ 提醒：末班車是 23:08 從小樽發車，23:53 抵達札幌。時間比較晚，請提早到站，不要錯過。</p>
+        <p class="jr-note">時刻來自 NAVITIME，「終點」是各班列車的行先，來源沒有標車種，但有另一份資料說明末班快速エアポート是 19:27 從小樽發車，20:22 那班是各站停車的普通，札幌到站時間是列車到札幌站的時間。出發前請以官方為準：<a href="https://www.jrhokkaido.co.jp/" target="_blank" rel="noopener">JR 北海道</a></p>
+      </details>
+      <p class="step">🚇 到札幌後轉搭地下鐵南北線：<b>札幌 → 中島公園</b>（往真駒內方向，約 5 分，中途經大通、すすきの）</p>
+      <details class="jr">
+        <summary>🚇 南北線時刻表｜さっぽろ → 中島公園（平日）</summary>
+        <div class="jr-wrap"><table class="jr-table">
+          <thead><tr><th>時</th><th>札幌發車（分）</th><th>抵達中島公園（約 +5 分）</th></tr></thead>
+          <tbody>
+            <tr><td>19 時</td><td>03 · 08 · 13 · 18 · 24 · 29 · 34 · 40 · 45 · 51 · 56</td><td>08 · 13 · 18 · 23 · 29 · 34 · 39 · 45 · 50 · 56 · 20:01</td></tr>
+            <tr><td>20 時</td><td>03 · 11 · 19 · 27 · 35 · 43 · 51 · 59</td><td>08 · 16 · 24 · 32 · 40 · 48 · 56 · 21:04</td></tr>
+            <tr><td>21 時</td><td>07 · 15 · 23 · 31 · 39 · 47 · 55</td><td>12 · 20 · 28 · 36 · 44 · 52 · 22:00</td></tr>
+            <tr><td>22 時</td><td>03 · 11 · 19 · 28 · 36 · 44 · 52</td><td>08 · 16 · 24 · 33 · 41 · 49 · 57</td></tr>
+            <tr><td>23 時</td><td>00 · 09 · 17 · 26 · 36 · 44 · 52</td><td>05 · 14 · 22 · 31 · 41 · 49 · 57</td></tr>
+            <tr><td>0 時</td><td>01 · 09</td><td>06 · 14</td></tr>
+          </tbody>
+        </table></div>
+        <p class="remind">⏰ 提醒：末班車是 00:09 從さっぽろ發車（已是隔天凌晨），約 00:14 抵達中島公園，請不要錯過。</p>
+        <p class="jr-note">往真駒內方向的平日時刻，列出 19 時之後。抵達時間是發車時間加 5 分估算的，實際可能差 1 分鐘。出發前可再確認：<a href="https://www.city.sapporo.jp/st/subway/route_time/h26/n06.html" target="_blank" rel="noopener">札幌市交通局｜南北線さっぽろ駅時刻表</a></p>
+      </details>
+      <p class="step">🚶 在中島公園站下車後，步行回 AONO STAY SAPPORO。</p>
+      <p class="remind">🕙 提醒：從 JR 月台走到地鐵月台約需 5–10 分鐘。</p>
+    </div></div>
     <div class="stay">🏨 住宿：札幌</div>
   </section>
 
   <section class="day" id="day3">
     <h2>Day 3｜12/12（六）神宮・動物園・聖誕市集</h2>
     <p class="sub">札幌近郊景點滿滿的一天</p>
-    <div class="item"><div class="time">10:00–12:00</div><div><h3>北海道神宮</h3><p>雪中參拜，氣氛特別安靜。</p></div></div>
-    <div class="item"><div class="time">12:00–13:00</div><div><h3>附近午餐</h3><p>六花亭、神宮茶屋等。</p></div></div>
-    <div class="item"><div class="time">13:00–15:00</div><div><h3>圓山動物園</h3><p>冬天的動物很可愛。</p></div></div>
-    <div class="item"><div class="time">15:00–17:00</div><div><h3>白色戀人工廠</h3><p>參觀、體驗、買伴手禮。</p></div></div>
-    <div class="item"><div class="time">18:00 起</div><div><h3>慕尼黑聖誕市集</h3><p>大通公園，逛市集吃吃喝喝。</p></div></div>
+    <div class="item"><div class="time dual"><span class="tz jp">🇯🇵 10:00</span></div><div><h3>從飯店出發（走路到中島公園站）</h3><p>前往北海道神宮：先搭南北線到大通，轉東西線到円山公園，再步行前往。</p>
+      <p class="step">🚇 先搭地下鐵南北線：<b>中島公園 → 大通</b>（往麻生方向，約 4 分，中途經すすきの）</p>
+      <details class="jr">
+        <summary>🚇 南北線時刻表｜中島公園 → 大通（假日）</summary>
+        <div class="jr-wrap"><table class="jr-table">
+          <thead><tr><th>時</th><th>中島公園發車（分）</th><th>抵達大通（約 +4 分）</th></tr></thead>
+          <tbody>
+            <tr><td>10 時</td><td>02 · 09 · 16 · 23 · 30 · 37 · 44 · 51 · 58</td><td>06 · 13 · 20 · 27 · 34 · 41 · 48 · 55 · 11:02</td></tr>
+            <tr><td>11 時</td><td>05 · 12 · 19 · 26 · 33 · 40 · 47 · 54</td><td>09 · 16 · 23 · 30 · 37 · 44 · 51 · 58</td></tr>
+          </tbody>
+        </table></div>
+        <p class="jr-note">往麻生方向的假日時刻，列出 10–11 時。抵達時間是用發車時間加 4 分估算的（2 站），實際可能差 1 分鐘。出發前可再確認：<a href="https://www.city.sapporo.jp/st/subway/route_time/h26/n09.html" target="_blank" rel="noopener">札幌市交通局｜南北線中島公園駅時刻表</a></p>
+      </details>
+      <p class="step">🚇 在大通站轉搭東西線：<b>大通 → 円山公園</b>（往宮の沢方向，約 5 分，共 3 站）</p>
+      <details class="jr">
+        <summary>🚇 東西線時刻表｜大通 → 円山公園（假日）</summary>
+        <div class="jr-wrap"><table class="jr-table">
+          <thead><tr><th>時</th><th>大通發車（分）</th><th>抵達円山公園（約 +5 分）</th></tr></thead>
+          <tbody>
+            <tr><td>10 時</td><td>01 · 08 · 15 · 22 · 29 · 36 · 43 · 50 · 57</td><td>06 · 13 · 20 · 27 · 34 · 41 · 48 · 55 · 11:02</td></tr>
+            <tr><td>11 時</td><td>04 · 11 · 18 · 25 · 32 · 39 · 46 · 53</td><td>09 · 16 · 23 · 30 · 37 · 44 · 51 · 58</td></tr>
+          </tbody>
+        </table></div>
+        <p class="remind">🕙 提醒：從南北線月台走到東西線月台約需 5 分鐘。</p>
+        <p class="jr-note">往宮の沢方向的假日時刻，列出 10–11 時。抵達時間是用發車時間加 5 分估算的（3 站），實際可能差 1 分鐘。這張時刻表頁面標示的更新日期是 2016 年，出發前請務必再確認：<a href="https://www.city.sapporo.jp/st/subway/route_time/h26/t09.html" target="_blank" rel="noopener">札幌市交通局｜東西線大通駅時刻表</a></p>
+      </details>
+      <p class="step">🚶 在円山公園站下車後，步行約 15 分前往北海道神宮。</p>
+      <p class="remind">🕙 建議路線：10:09 搭南北線 → 約 10:13 到大通 → 10:22 搭東西線 → 約 10:27 到円山公園 → 步行約 15 分，約 10:42 抵達北海道神宮。</p>
+    </div></div>
+    <div class="item"><div class="time dual"><span class="tz jp">🇯🇵 約 10:42–12:00</span></div><div><h3>北海道神宮</h3><p>雪中參拜，氣氛特別安靜。</p></div></div>
+    <div class="item"><div class="time dual"><span class="tz jp">🇯🇵 12:00–13:00</span></div><div><h3>附近午餐</h3><p>六花亭、神宮茶屋等。</p></div></div>
+    <div class="item"><div class="time dual"><span class="tz jp">🇯🇵 13:00–15:00</span></div><div><h3>圓山動物園</h3><p>冬天的動物很可愛。</p></div></div>
+    <div class="item"><div class="time dual"><span class="tz jp">🇯🇵 約 15:00</span></div><div><h3>從圓山動物園前往白色戀人工廠</h3><p>走回円山公園站，搭東西線到終點宮の沢，再步行前往。</p>
+      <p class="step">🚶 先從圓山動物園步行回円山公園站（約 15 分）。</p>
+      <p class="step">🚇 搭地下鐵東西線：<b>円山公園 → 宮の沢</b>（往宮の沢方向，約 10 分，共 5 站，宮の沢是終點站）</p>
+      <details class="jr">
+        <summary>🚇 東西線時刻表｜円山公園 → 宮の沢（假日）</summary>
+        <div class="jr-wrap"><table class="jr-table">
+          <thead><tr><th>時</th><th>円山公園發車（分）</th><th>抵達宮の沢（約 +10 分）</th></tr></thead>
+          <tbody>
+            <tr><td>13 時</td><td>36 · 43 · 50 · 57</td><td>46 · 53 · 14:00 · 14:07</td></tr>
+            <tr><td>14 時</td><td>04 · 11 · 18 · 25 · 32 · 39 · 46 · 53</td><td>14 · 21 · 28 · 35 · 42 · 49 · 56 · 15:03</td></tr>
+            <tr><td>15 時</td><td>00 · 07 · 14 · 21 · 28 · 35 · 42 · 49 · 56</td><td>10 · 17 · 24 · 31 · 38 · 45 · 52 · 59 · 16:06</td></tr>
+            <tr><td>16 時</td><td>03 · 10 · 17 · 24 · 31 · 38 · 45 · 52 · 59</td><td>13 · 20 · 27 · 34 · 41 · 48 · 55 · 17:02 · 17:09</td></tr>
+          </tbody>
+        </table></div>
+        <p class="jr-note">往宮の沢方向的假日時刻，列出 13:30 之後到 16 時。抵達時間是用發車時間加 10 分估算的（5 站），實際可能差 1–2 分鐘。這張時刻表頁面標示的更新日期是 2016 年，出發前請務必再確認：<a href="https://www.city.sapporo.jp/st/subway/route_time/h26/t06.html" target="_blank" rel="noopener">札幌市交通局｜東西線円山公園駅時刻表</a></p>
+      </details>
+      <p class="step">🚶 在宮の沢站下車後，步行約 7 分前往白色戀人工廠。</p>
+      <p class="remind">⏰ 提醒：白色戀人公園付費入館的最後受付是 16:30，冬季開放時間可能不同，出發前請到白色戀人公園官方網站確認。</p>
+      <p class="remind">🕙 建議路線：15:00 離開動物園 → 約 15:15 到円山公園站 → 15:21 搭東西線 → 約 15:31 抵達宮の沢 → 步行約 7 分，約 15:40 抵達。</p>
+    </div></div>
+    <div class="item"><div class="time dual"><span class="tz jp">🇯🇵 約 15:40–17:00</span></div><div><h3>白色戀人工廠</h3><p>參觀、體驗、買伴手禮。</p></div></div>
+    <div class="item"><div class="time dual"><span class="tz jp">🇯🇵 約 17:00</span></div><div><h3>從白色戀人工廠前往大通公園</h3><p>走回宮の沢站，搭東西線到大通，慕尼黑聖誕市集就在大通公園。</p>
+      <p class="step">🚶 先從白色戀人工廠步行回宮の沢站（約 7 分）。</p>
+      <p class="step">🚇 搭地下鐵東西線：<b>宮の沢 → 大通</b>（往新さっぽろ方向，約 18 分，共 8 站，宮の沢是起點站）</p>
+      <details class="jr">
+        <summary>🚇 東西線時刻表｜宮の沢 → 大通（假日）</summary>
+        <div class="jr-wrap"><table class="jr-table">
+          <thead><tr><th>時</th><th>宮の沢發車（分）</th><th>抵達大通（約 +18 分）</th></tr></thead>
+          <tbody>
+            <tr><td>15 時</td><td>04 · 11 · 18 · 25 · 32 · 39 · 46 · 53</td><td>22 · 29 · 36 · 43 · 50 · 57 · 16:04 · 16:11</td></tr>
+            <tr><td>16 時</td><td>00 · 07 · 14 · 21 · 28 · 35 · 42 · 49 · 56</td><td>18 · 25 · 32 · 39 · 46 · 53 · 17:00 · 17:07 · 17:14</td></tr>
+            <tr><td>17 時</td><td>03 · 10 · 17 · 24 · 31 · 38 · 45 · 52 · 59</td><td>21 · 28 · 35 · 42 · 49 · 56 · 18:03 · 18:10 · 18:17</td></tr>
+            <tr><td>18 時</td><td>06 · 13 · 20 · 27 · 34 · 41 · 48 · 55</td><td>24 · 31 · 38 · 45 · 52 · 59 · 19:06 · 19:13</td></tr>
+          </tbody>
+        </table></div>
+        <p class="jr-note">往新さっぽろ方向的假日時刻，列出 15 時之後到 18 時。抵達時間是用發車時間加 18 分估算的（8 站），實際可能差 1–2 分鐘。這張時刻表頁面標示的更新日期是 2016 年，出發前請務必再確認：<a href="https://www.city.sapporo.jp/st/subway/route_time/h26/t01.html" target="_blank" rel="noopener">札幌市交通局｜東西線宮の沢駅時刻表</a></p>
+      </details>
+    </div></div>
+    <div class="item"><div class="time dual"><span class="tz jp">🇯🇵 18:00 起</span></div><div><h3>慕尼黑聖誕市集</h3><p>大通公園，逛市集吃吃喝喝。若有時間，也可以步行去狸小路逛街，或逛百貨。</p></div></div>
+    <div class="item"><div class="time dual"><span class="tz jp">🇯🇵 市集結束後</span></div><div><h3>回飯店</h3><p>在大通搭南北線回中島公園，再步行回飯店。聖誕市集營業到 21:00（最後點餐 20:45）。</p>
+      <p class="step">🚇 搭地下鐵南北線：<b>大通 → 中島公園</b>（往真駒內方向，約 4 分，中途經すすきの）</p>
+      <details class="jr">
+        <summary>🚇 南北線時刻表｜大通 → 中島公園（假日）</summary>
+        <div class="jr-wrap"><table class="jr-table">
+          <thead><tr><th>時</th><th>大通發車（分）</th><th>抵達中島公園（約 +4 分）</th></tr></thead>
+          <tbody>
+            <tr><td>19 時</td><td>08 · 15 · 23 · 29 · 35 · 42 · 48 · 56</td><td>12 · 19 · 27 · 33 · 39 · 46 · 52 · 20:00</td></tr>
+            <tr><td>20 時</td><td>05 · 13 · 21 · 29 · 37 · 45 · 53</td><td>09 · 17 · 25 · 33 · 41 · 49 · 57</td></tr>
+            <tr><td>21 時</td><td>01 · 09 · 17 · 25 · 33 · 41 · 49 · 57</td><td>05 · 13 · 21 · 29 · 37 · 45 · 53 · 22:01</td></tr>
+            <tr><td>22 時</td><td>05 · 13 · 21 · 29 · 38 · 46 · 54</td><td>09 · 17 · 25 · 33 · 42 · 50 · 58</td></tr>
+          </tbody>
+        </table></div>
+        <p class="remind">⏰ 提醒：末班車是 00:11 從大通發車（已是隔天凌晨），請不要錯過。</p>
+        <p class="jr-note">往真駒內方向的假日時刻，列出 19–22 時。抵達時間是用發車時間加 4 分估算的（2 站），實際可能差 1 分鐘。出發前可再確認：<a href="https://www.city.sapporo.jp/st/subway/route_time/h26/n07.html" target="_blank" rel="noopener">札幌市交通局｜南北線大通駅時刻表</a></p>
+      </details>
+      <p class="step">🚶 在中島公園站下車後，步行回 AONO STAY SAPPORO。</p>
+    </div></div>
     <div class="stay">🏨 住宿：札幌</div>
   </section>
 
@@ -191,8 +475,8 @@ footer{text-align:center;color:var(--muted);padding:24px;font-size:.85rem}
   <section class="day" id="day6">
     <h2>Day 6｜12/15（二）返程</h2>
     <p class="sub">搭計程車前往機場，準備回家</p>
-    <div class="item"><div class="time">08:30–09:30</div><div><h3>計程車前往新千歲機場</h3><p>預留時間給雪天路況。</p></div></div>
-    <div class="item"><div class="time">11:55</div><div><h3>新千歲機場起飛</h3><p>飛往桃園國際機場，平安回家。</p></div></div>
+    <div class="item"><div class="time dual"><span class="tz jp">🇯🇵 08:30–09:30</span></div><div><h3>計程車前往新千歲機場</h3><p>預留時間給雪天路況。</p></div></div>
+    <div class="item"><div class="time dual"><span class="tz jp">🇯🇵 11:55</span></div><div><h3>新千歲機場起飛</h3><p>飛往桃園國際機場，平安回家。</p></div></div>
   </section>
 
   <section class="spots" id="spots">
