@@ -94,7 +94,7 @@ main{max-width:760px;margin:0 auto;padding:32px 18px 56px}
 @keyframes takeoff{0%{transform:translate(-10px,32px) rotate(-18deg) scale(.85);opacity:0}15%{opacity:1}70%{opacity:1}100%{transform:translate(14px,-10px) rotate(-18deg) scale(1.15);opacity:0}}
 @media (prefers-reduced-motion:reduce){.time.fly .plane{animation:none}}
 .time.fly .plane.land{animation:landing 2.6s ease-in-out infinite}
-@keyframes landing{0%{transform:translate(-12px,-10px) rotate(14deg) scale(1.15);opacity:0}15%{opacity:1}70%{transform:translate(10px,17px) rotate(5deg) scale(.85);opacity:1}100%{transform:translate(14px,20px) rotate(0deg) scale(.85);opacity:0}}
+@keyframes landing{0%{transform:translate(-12px,-10px) rotate(14deg) scale(1.15);opacity:0}15%{opacity:1}70%{opacity:1}100%{transform:translate(14px,20px) rotate(5deg) scale(.85);opacity:0}}
 @media (prefers-reduced-motion:reduce){.time.fly .plane.land{animation:none}}
 .tz-legend .tz{font-size:.85rem;padding:3px 12px}
 .item h3{font-size:1.02rem}
@@ -157,6 +157,7 @@ main{max-width:760px;margin:0 auto;padding:32px 18px 56px}
   .jr-table th:last-child,.jr-table td:last-child{padding-right:6px}
   .jr-table th:nth-child(3):last-child,.jr-table td:nth-child(3):last-child{padding-left:8px}
   .jr-table td:first-child{white-space:nowrap}
+  .jr-table.has-end td:nth-child(3){white-space:nowrap}
   .jr-table .tt{white-space:nowrap}
 }
 .map-embed{margin:12px 0 4px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bg)}
@@ -214,7 +215,7 @@ footer{text-align:center;color:var(--muted);padding:24px;font-size:.85rem}
     <div class="item"><div class="time dual"><span class="tz jp">🇯🇵 14:00–16:30</span></div><div><h3>前往飯店｜AONO STAY SAPPORO（Check-in 15:00 起）</h3><p>搭乘 JR 快速エアポート（新千歲機場 → 札幌）</p>
       <details class="jr">
         <summary>🚆 JR 時刻表｜新千歲機場 → 札幌（平日）</summary>
-        <div class="jr-wrap"><table class="jr-table">
+        <div class="jr-wrap"><table class="jr-table has-end">
           <thead><tr><th>發車</th><th>車種</th><th>終點</th><th>抵達札幌</th></tr></thead>
           <tbody>
             <tr><td>14:09</td><td><span class="tt sr">區間快速</span></td><td>札幌</td><td>14:52（43 分）</td></tr>
@@ -305,7 +306,7 @@ footer{text-align:center;color:var(--muted);padding:24px;font-size:.85rem}
       <p class="step">🚆 在札幌站轉搭 JR 快速エアポート：<b>札幌 → 小樽</b>（小樽行，約 35–41 分）</p>
       <details class="jr">
         <summary>🚆 JR 時刻表｜札幌 → 小樽（エアポート）</summary>
-        <div class="jr-wrap"><table class="jr-table">
+        <div class="jr-wrap"><table class="jr-table has-end">
           <thead><tr><th>札幌發車</th><th>車種</th><th>終點</th><th>抵達小樽</th></tr></thead>
           <tbody>
             <tr><td>10:00</td><td><span class="tt rp">快速</span></td><td>小樽</td><td>10:41（41 分）</td></tr>
@@ -339,7 +340,7 @@ footer{text-align:center;color:var(--muted);padding:24px;font-size:.85rem}
       <p class="step">🚆 先搭 JR：<b>小樽 → 札幌</b>（約 45–50 分，不用轉車）</p>
       <details class="jr">
         <summary>🚆 JR 時刻表｜小樽 → 札幌（19:00 後）</summary>
-        <div class="jr-wrap"><table class="jr-table">
+        <div class="jr-wrap"><table class="jr-table has-end">
           <thead><tr><th>小樽發車</th><th>車種</th><th>終點</th><th>抵達札幌</th></tr></thead>
           <tbody>
             <tr><td>19:00</td><td><span class="tt rp">快速</span></td><td>新千歲空港</td><td>19:34（34 分）</td></tr>
@@ -502,27 +503,78 @@ footer{text-align:center;color:var(--muted);padding:24px;font-size:.85rem}
     <h2>Day 6｜12/15（二）返程</h2>
     <p class="sub">搭計程車前往機場，準備回家</p>
     <div class="item"><div class="time dual"><span class="tz jp">🇯🇵 08:30–09:30</span></div><div><h3>計程車前往新千歲機場</h3><p>預留時間給雪天路況。</p></div></div>
-    <div class="item"><div class="time dual"><span class="tz jp">🇯🇵 11:55</span></div><div><h3>新千歲機場起飛</h3><p>飛往桃園國際機場，平安回家。</p></div></div>
+    <div class="item"><div class="time dual fly"><span class="tz jp">🇯🇵 11:55</span><span class="plane"><svg viewBox="0 0 64 32" aria-hidden="true"><path d="M6 11 L2 2 L12 2 L19 11Z" fill="#ff7a00"/><path d="M4 2 L8 2 L11 8 L7 8Z" fill="#3a1f0a"/><path d="M28 18 L20 30 L32 30 L43 18Z" fill="#e05a00"/><path d="M4 14 Q4 10 10 10 L50 10 Q60 12 62 16 Q60 20 50 22 L10 22 Q4 20 4 14Z" fill="#ff7a00"/><path d="M18 10 L23 10 L19 22 L14 22Z M29 10 L34 10 L30 22 L25 22Z M40 10 L45 10 L41 22 L36 22Z" fill="#3a1f0a" opacity=".85"/><path d="M52 12.5 L58 14 L58 16 L51 16Z" fill="#fff3d6"/></svg></span></div><div><h3>新千歲機場起飛</h3><p>飛往桃園國際機場，平安回家。</p></div></div>
+    <div class="item"><div class="time dual fly"><span class="tz tw">🇹🇼 15:35</span><span class="plane land"><svg viewBox="0 0 64 32" aria-hidden="true"><path d="M6 11 L2 2 L12 2 L19 11Z" fill="#ff7a00"/><path d="M4 2 L8 2 L11 8 L7 8Z" fill="#3a1f0a"/><path d="M28 18 L20 30 L32 30 L43 18Z" fill="#e05a00"/><path d="M4 14 Q4 10 10 10 L50 10 Q60 12 62 16 Q60 20 50 22 L10 22 Q4 20 4 14Z" fill="#ff7a00"/><path d="M18 10 L23 10 L19 22 L14 22Z M29 10 L34 10 L30 22 L25 22Z M40 10 L45 10 L41 22 L36 22Z" fill="#3a1f0a" opacity=".85"/><path d="M52 12.5 L58 14 L58 16 L51 16Z" fill="#fff3d6"/></svg></span></div><div><h3>抵達桃園國際機場</h3><p>台灣時間。</p></div></div>
+    <div class="item"><div class="time dual"><span class="tz tw">🇹🇼 約 17:00</span></div><div><h3>搭高鐵回高雄</h3><p>從桃園機場搭機場捷運到高鐵桃園站，再搭高鐵南下到左營。</p>
+      <details class="jr">
+        <summary>🚄 高鐵時刻表｜桃園 → 左營（平日）</summary>
+        <div class="jr-wrap"><table class="jr-table">
+          <thead><tr><th>桃園發車</th><th>車次</th><th>抵達左營</th></tr></thead>
+          <tbody>
+            <tr><td>16:34</td><td>0841</td><td>18:25（1 時 51 分）</td></tr>
+            <tr><td>16:43</td><td>0661</td><td>18:20（1 時 37 分）</td></tr>
+            <tr ><td>17:10</td><td>0663</td><td>18:45（1 時 35 分）</td></tr>
+            <tr><td>17:34</td><td>0845</td><td>19:25（1 時 51 分）</td></tr>
+            <tr><td>17:43</td><td>0667</td><td>19:20（1 時 37 分）</td></tr>
+            <tr><td>18:10</td><td>0669</td><td>19:45（1 時 35 分）</td></tr>
+            <tr><td>18:34</td><td>0849</td><td>20:25（1 時 51 分）</td></tr>
+            <tr><td>18:43</td><td>0673</td><td>20:20（1 時 37 分）</td></tr>
+            <tr><td>19:10</td><td>0675</td><td>20:45（1 時 35 分）</td></tr>
+          </tbody>
+        </table></div>
+        <p class="jr-note">時刻參考交通部 TDX 公開資料，12/15 的時刻還沒公布，這裡用 2026/11/24（週二）的平日時刻代替，實際班次和時間請以台灣高鐵官網為準：<a href="https://www.thsrc.com.tw/" target="_blank" rel="noopener">台灣高鐵</a></p>
+      </details>
+    </div></div>
+    <div class="item"><div class="time dual"><span class="tz tw">🇹🇼 約 18:45</span></div><div><h3>搭台鐵回潮州</h3><p>在左營下高鐵後，轉搭台鐵新左營站的列車，前往潮州。</p>
+      <details class="jr">
+        <summary>🚆 台鐵時刻表｜新左營 → 潮州（平日）</summary>
+        <div class="jr-wrap"><table class="jr-table has-end">
+          <thead><tr><th>新左營發車</th><th>車種</th><th>終點</th><th>抵達潮州</th></tr></thead>
+          <tbody>
+            <tr><td>18:25</td><td><span class="tt lc">區間</span></td><td>潮州</td><td>19:35（1 時 10 分）</td></tr>
+            <tr><td>18:33</td><td><span class="tt lc">區間</span></td><td>枋寮</td><td>19:55（1 時 22 分）</td></tr>
+            <tr><td>18:45</td><td><span class="tt sp">自強號</span></td><td>潮州</td><td>19:39（54 分）</td></tr>
+            <tr><td>18:50</td><td><span class="tt sp">自強號</span></td><td>花蓮</td><td>19:29（39 分）</td></tr>
+            <tr><td>18:55</td><td><span class="tt lc">區間</span></td><td>潮州</td><td>20:10（1 時 15 分）</td></tr>
+            <tr ><td>19:02</td><td><span class="tt sr">區間快</span></td><td>潮州</td><td>19:46（44 分）</td></tr>
+            <tr><td>19:14</td><td><span class="tt lc">區間</span></td><td>潮州</td><td>20:33（1 時 19 分）</td></tr>
+            <tr><td>19:24</td><td><span class="tt sp">自強號</span></td><td>潮州</td><td>20:04（40 分）</td></tr>
+            <tr><td>19:26</td><td><span class="tt sr">區間快</span></td><td>潮州</td><td>20:25（59 分）</td></tr>
+            <tr><td>19:45</td><td><span class="tt lc">區間</span></td><td>潮州</td><td>21:10（1 時 25 分）</td></tr>
+            <tr><td>20:02</td><td><span class="tt sp">自強號</span></td><td>臺東</td><td>20:41（39 分）</td></tr>
+            <tr><td>20:21</td><td><span class="tt sr">區間快</span></td><td>潮州</td><td>21:05（44 分）</td></tr>
+          </tbody>
+        </table></div>
+        <ul class="jr-legend">
+          <li><span class="tt sp">自強號</span> 停站少、最快，是對號列車，要先買有座位的票。</li>
+          <li><span class="tt sr">區間快</span> 比區間停站少，不用劃位。</li>
+          <li><span class="tt lc">區間</span> 每站停車，最慢，不用劃位。</li>
+        </ul>
+        <p class="jr-note">時刻參考交通部 TDX 公開資料，12/15 的時刻還沒公布，這裡用 2026/11/24（週二）的平日時刻代替，「終點」是各班列車的終點站，都會經過潮州。實際班次請以台鐵官網為準：<a href="https://www.railway.gov.tw/" target="_blank" rel="noopener">台灣鐵路</a></p>
+      </details>
+    </div></div>
   </section>
 
   <section class="spots" id="spots">
     <h2>各景點與吃</h2>
-    <p class="sub">下方地圖可以直接點 pin 針看店家資訊；地圖下面的連結可開啟 Google Maps，依地區分類。灰色虛線＝Google 地圖評分低於 4.0（2026/10/25 查詢）</p>
+    <p class="sub">下方地圖可以直接點 pin 針看店家資訊；地圖下面的連結可開啟 Google Maps，依地區分類。灰色虛線＝Google 地圖評分低於 3.5（2026/10/25 查詢；新增店家 2026/11/01 查詢）</p>
     <a class="map-open" href="https://www.google.com/maps/d/viewer?mid=1YyArlU-LXNf9ucw852DeLWq7ETAXvYQ" target="_blank" rel="noopener">🗺️ 用 Google 地圖全螢幕開啟（手機建議用這個）</a>
     <div class="map-embed"><div class="map-lock" onclick="this.remove()">👆 點一下開始操作地圖</div><iframe src="https://www.google.com/maps/d/embed?mid=1YyArlU-LXNf9ucw852DeLWq7ETAXvYQ&ehbc=2E312F" title="北海道景點與吃地圖" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-    <div class="region">
+        <div class="region">
       <h3>札幌市區</h3>
       <div class="group">
         <h4>🍽️ 吃</h4>
         <ul class="links">
           <li><a href="https://www.google.com/maps/search/?api=1&query=%E8%9F%B9%E5%BA%A7+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 蟹座</a></li>
-          <li><a class="warn" href="https://www.google.com/maps/search/?api=1&query=%E9%9B%AA%E5%8D%B0+the+butter+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 雪印 the butter</a><span class="note">Google 3.4｜評價不好</span></li>
+          <li><a class="warn" href="https://www.google.com/maps/search/?api=1&query=%E9%9B%AA%E5%8D%B0+the+butter+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 雪印 the butter</a><span class="note">Google 3.4｜評價不好喔</span></li>
           <li><a href="https://www.google.com/maps/search/?api=1&query=%E6%B5%B7%E9%AE%AE%E4%B8%BC%E5%B0%82%E9%96%80%E5%BA%97+%E5%AF%BF%E5%8F%B8%E3%81%A9%E3%82%93%E3%81%B6%E3%82%8A+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 海鮮丼專門店 寿司どんぶり</a></li>
           <li><a href="https://www.google.com/maps/search/?api=1&query=Majisand+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 Majisand</a></li>
           <li><a href="https://www.google.com/maps/search/?api=1&query=Tiger+curry+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 Tiger Curry</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=Yakiniku+Tokuju+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 Yakiniku Tokuju</a><span class="note">札幌有多家分店，Google 約 4.0–4.4</span></li>
           <li><a href="https://www.google.com/maps/search/?api=1&query=%E7%B5%B5%E3%81%AB%E6%8F%8F%E3%81%84%E3%81%9F%E9%A4%85+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 絵に描いた餅</a><span class="note">住宿旁步行約 10 分鐘</span></li>
-          <li><a class="warn" href="https://www.google.com/maps/search/?api=1&query=morimoto+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 Morimoto</a><span class="note">Google 3.8–3.9（札幌兩家分店）</span></li>
           <li><a href="https://www.google.com/maps/search/?api=1&query=%E5%8F%82%E5%85%83%E8%B1%9A%E7%A0%94%E7%A9%B6%E6%89%80+%E5%8C%977%E6%9D%A1%E6%9C%AD%E5%B9%8C%E5%BA%97" target="_blank" rel="noopener">📍 參元豚研究所 北7條札幌店</a></li>
+          <li><a class="warn" href="https://www.google.com/maps/search/?api=1&query=Takoyaki+and+Highballs+%E7%8B%B8%E5%B0%8F%E8%B7%AF+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 章魚燒和威士忌蘇打</a><span class="note">Google 3.0–3.3（狸小路有 2 家）</span></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=KINOTOYA+BAKE+POLE+TOWN+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 KINOTOYA BAKE POLE TOWN</a></li>
         </ul>
       </div>
       <div class="group">
@@ -531,27 +583,33 @@ footer{text-align:center;color:var(--muted);padding:24px;font-size:.85rem}
           <li><a href="https://www.google.com/maps/search/?api=1&query=%E3%83%9F%E3%83%A5%E3%83%B3%E3%83%98%E3%83%B3%E3%83%BB%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%9E%E3%82%B9%E5%B8%82+%E6%9C%AD%E5%B9%8C+%E5%A4%A7%E9%80%9A%E5%85%AC%E5%9C%92" target="_blank" rel="noopener">📍 札幌慕尼黑聖誕市場</a></li>
           <li><a href="https://www.google.com/maps/search/?api=1&query=%E7%8B%B8%E5%B0%8F%E8%B7%AF%E5%95%86%E5%BA%97%E8%A1%97+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 狸小路商店街</a><span class="note">原寫「貍小貓商店」，暫以狸小路搜尋</span></li>
           <li><a href="https://www.google.com/maps/search/?api=1&query=%E8%AB%8F%E8%A8%AA%E7%A5%9E%E7%A4%BE+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 諏訪神社</a></li>
-          <li><a class="warn" href="https://www.google.com/maps/search/?api=1&query=%E4%BA%8C%E6%9D%A1%E5%B8%82%E5%A0%B4+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 二條市場</a><span class="note">Google 3.8</span></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E4%BA%8C%E6%9D%A1%E5%B8%82%E5%A0%B4+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 二條市場</a><span class="note">Google 3.8</span></li>
         </ul>
       </div>
       <div class="group">
         <h4>🎁 伴手禮</h4>
         <ul class="links">
           <li><a href="https://www.google.com/maps/search/?api=1&query=%E3%83%AB%E3%82%BF%E3%82%AA+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 LeTAO</a></li>
-          <li><a class="warn" href="https://www.google.com/maps/search/?api=1&query=%E6%A5%B5%E4%B8%8A+%E3%83%97%E3%83%AA%E3%83%B3+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 極上布丁</a><span class="note">Google 3.7（比對到「プリン本舗」，請確認店名）</span></li>
-          <li><a class="warn" href="https://www.google.com/maps/search/?api=1&query=snow+cheese+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 Snow Cheese</a><span class="note">Google 3.5</span></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E6%A5%B5%E4%B8%8A+%E3%83%97%E3%83%AA%E3%83%B3+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 極上布丁</a><span class="note">Google 3.7（比對到「プリン本舗」，請確認店名）</span></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=snow+cheese+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 Snow Cheese</a><span class="note">Google 3.5</span></li>
           <li><a href="https://www.google.com/maps/search/?api=1&query=%E3%83%91%E3%83%AA%E3%81%A9%E3%82%89+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 巴里銅鑼專賣店</a></li>
           <li><a href="https://www.google.com/maps/search/?api=1&query=%E6%9C%AD%E5%B9%8C%E8%BE%B2%E5%AD%A6%E6%A0%A1+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 札幌農學校</a></li>
           <li><a class="warn" href="https://www.google.com/maps/search/?api=1&query=%E3%83%96%E3%83%A9%E3%82%A6%E3%83%B3%E3%83%81%E3%83%BC%E3%82%BA+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 Brown Cheese</a><span class="note">Google 3.4（僅 5 則評論）</span></li>
           <li><a href="https://www.google.com/maps/search/?api=1&query=%E3%82%AC%E3%83%88%E3%83%BC%E3%83%95%E3%82%A7%E3%82%B9%E3%82%BF+%E3%83%8F%E3%83%A9%E3%83%80+%E5%A4%A7%E4%B8%B8%E6%9C%AD%E5%B9%8C%E5%BA%97" target="_blank" rel="noopener">📍 Gateau Festa Harada 大丸札幌店</a></li>
           <li><a href="https://www.google.com/maps/search/?api=1&query=%E5%8C%97%E8%8F%93%E6%A5%BC+%E6%9C%AD%E5%B9%8C%E6%9C%AC%E9%A4%A8" target="_blank" rel="noopener">📍 北菓樓</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=morimoto+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 Morimoto（寶石餅乾）</a><span class="note">多個分店｜Google 3.8–3.9</span></li>
         </ul>
       </div>
       <div class="group">
-        <h4>🛍️ 服裝與家電</h4>
+        <h4>👕 服裝</h4>
         <ul class="links">
           <li><a href="https://www.google.com/maps/search/?api=1&query=%E3%83%A6%E3%83%8B%E3%82%AF%E3%83%AD+%E6%9C%AD%E5%B9%8C+%E6%9D%B1%E6%80%A5%E7%99%BE%E8%B2%A8%E5%BA%97" target="_blank" rel="noopener">📍 東急 Uniqlo（北海道限定）</a></li>
-          <li><a class="warn" href="https://www.google.com/maps/search/?api=1&query=%E3%83%93%E3%83%83%E3%82%AF%E3%82%AB%E3%83%A1%E3%83%A9+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 東急 Big Camera</a><span class="note">Google 3.9</span></li>
+        </ul>
+      </div>
+      <div class="group">
+        <h4>🔌 家電</h4>
+        <ul class="links">
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E3%83%93%E3%83%83%E3%82%AF%E3%82%AB%E3%83%A1%E3%83%A9+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 東急 Big Camera</a><span class="note">Google 3.9</span></li>
         </ul>
       </div>
     </div>
@@ -561,7 +619,7 @@ footer{text-align:center;color:var(--muted);padding:24px;font-size:.85rem}
         <h4>🍽️ 吃</h4>
         <ul class="links">
           <li><a href="https://www.google.com/maps/search/?api=1&query=%E3%83%88%E3%83%AA%E3%83%88%E3%83%B3+%E5%9B%9E%E8%BB%A2%E5%AF%BF%E5%8F%B8+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 トリトン迴轉壽司（共 3 家）</a><span class="note">搜尋後可看到 3 家分店</span></li>
-          <li><a class="warn" href="https://www.google.com/maps/search/?api=1&query=grill+%26+hamburger+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 Grill & Hamburger</a><span class="note">Google 3.9（比對到 MonsterSUN，請確認）</span></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=grill+%26+hamburger+%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener">📍 Grill &amp; Hamburger</a><span class="note">Google 3.9（比對到 MonsterSUN，請確認）</span></li>
         </ul>
       </div>
       <div class="group">
@@ -571,6 +629,7 @@ footer{text-align:center;color:var(--muted);padding:24px;font-size:.85rem}
           <li><a href="https://www.google.com/maps/search/?api=1&query=%E5%86%86%E5%B1%B1%E5%8B%95%E7%89%A9%E5%9C%92" target="_blank" rel="noopener">📍 圓山動物園</a></li>
           <li><a href="https://www.google.com/maps/search/?api=1&query=%E7%99%BD%E3%81%84%E6%81%8B%E4%BA%BA%E3%83%91%E3%83%BC%E3%82%AF" target="_blank" rel="noopener">📍 白色戀人工廠（石屋製菓）</a></li>
           <li><a href="https://www.google.com/maps/search/?api=1&query=%E5%85%AD%E8%8A%B1%E4%BA%AD+%E7%A5%9E%E5%AE%AE%E8%8C%B6%E5%B1%8B%E5%BA%97" target="_blank" rel="noopener">📍 六花亭 神宮茶屋店</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E6%9C%AD%E5%B9%8C%E4%BC%8F%E8%A6%8B%E7%A8%B2%E8%8D%B7%E7%A5%9E%E7%A4%BE" target="_blank" rel="noopener">📍 伏見稻荷神社</a><span class="note">札幌外圍</span></li>
         </ul>
       </div>
     </div>
@@ -580,12 +639,14 @@ footer{text-align:center;color:var(--muted);padding:24px;font-size:.85rem}
         <h4>🍽️ 吃</h4>
         <ul class="links">
           <li><a class="warn" href="https://www.google.com/maps/search/?api=1&query=%E5%B0%8F%E6%A8%BD%E5%92%8C%E7%89%9B+%E9%BB%92%E6%BE%A4+%E5%A0%BA%E7%94%BA%E9%80%9A%E3%82%8A%E5%BA%97" target="_blank" rel="noopener">📍 小樽和牛黑澤 堺町通店</a><span class="note">Google 3.4｜評價不好，高機率 pass</span></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=Otaru+Bine+%E5%B0%8F%E6%A8%BD" target="_blank" rel="noopener">📍 Otaru Bine</a></li>
         </ul>
       </div>
       <div class="group">
         <h4>🎡 景點</h4>
         <ul class="links">
           <li><a href="https://www.google.com/maps/search/?api=1&query=%E5%B0%8F%E6%A8%BD%E3%82%AA%E3%83%AB%E3%82%B4%E3%83%BC%E3%83%AB%E5%A0%82" target="_blank" rel="noopener">📍 小樽音樂盒堂</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E5%B0%8F%E6%A8%BD%E5%A4%A7%E6%AD%A3%E7%A1%9D%E5%AD%90%E9%A4%A8+%E6%9C%AC%E5%BA%97" target="_blank" rel="noopener">📍 大正硝子館 本店</a></li>
         </ul>
       </div>
       <div class="group">
@@ -596,12 +657,20 @@ footer{text-align:center;color:var(--muted);padding:24px;font-size:.85rem}
       </div>
     </div>
     <div class="region">
-      <h3>地區待確認</h3>
+      <h3>旭川・美瑛</h3>
       <div class="group">
-        <h4>📝 尚未標註地區</h4>
+        <h4>🎡 景點</h4>
         <ul class="links">
-          <li><a href="https://www.google.com/maps/search/?api=1&query=%E7%84%BC%E8%82%89+%E5%BE%B3%E5%AF%BF+%E5%8C%97%E6%B5%B7%E9%81%93" target="_blank" rel="noopener">📍 燒肉德壽</a></li>
-          <li><a href="https://www.google.com/maps/search/?api=1&query=%E5%AE%9D%E7%9F%B3+%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC+%E5%8C%97%E6%B5%B7%E9%81%93" target="_blank" rel="noopener">📍 寶石餅乾</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E7%BE%8E%E7%91%9B%E7%A5%9E%E7%A4%BE" target="_blank" rel="noopener">📍 美瑛神社</a><span class="note">位於美瑛町（旭川方向）</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="region">
+      <h3>新千歲機場</h3>
+      <div class="group">
+        <h4>🍽️ 吃</h4>
+        <ul class="links">
+          <li><a href="https://www.google.com/maps/search/?api=1&query=%E6%96%B0%E5%8D%83%E6%AD%B3%E7%A9%BA%E6%B8%AF" target="_blank" rel="noopener">📍 新千歲機場（玉米麵包、雪印冰淇淋、白色戀人 ISHIYA 紅豆銅鑼燒）</a><span class="note">玉米麵包、雪印冰淇淋、白色戀人 ISHIYA 紅豆銅鑼燒</span></li>
         </ul>
       </div>
     </div>
